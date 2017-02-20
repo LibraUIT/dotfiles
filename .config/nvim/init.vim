@@ -49,13 +49,17 @@ if has('mouse')
   set mouse=a
 end
 
+filetype on
+filetype indent on
+filetype plugin on
+syntax on
+
 set clipboard=unnamedplus
 set nu
 set autoread
 set autowrite
 set autoindent
 set si "smart indent
-syntax on
 set nobackup
 set nowb
 set noswapfile
@@ -70,6 +74,8 @@ set wrap linebreak nolist
 set encoding=utf8
 set background=dark
 set textwidth=80
+set gfn=DejaVu\ Sans\ Mono\ for\ Powerline:h13
+
 
 "========================================================
 " MAPPING NERDTree
@@ -80,6 +86,69 @@ let NERDTreeMapOpenSplit = 'x'
 let NERDTreeMapOpenVSplit = 'v'
 
 "========================================================
+
+
+
+"========================================================
+" CONFIG AIRLINE
+"========================================================
+
+let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
+let g:airline_symbols = {}
+if !exists('g:airline_symbols')
+endif
+let g:airline_symbols.space = "\ua0"
+let s:spc = g:airline_symbols.space
+function! AirlineInit()
+  let g:airline_section_a = airline#section#create(['%{toupper(mode())}'])
+  let g:airline_section_b = airline#section#create([''])
+  let g:airline_section_z = airline#section#create(['%p%%'])
+endfunction
+
+
+"========================================================
+" CONFIG GITGUTTER
+"========================================================
+let g:gitgutter_sign_added = '🌱'
+let g:gitgutter_sign_modified = '✨'
+let g:gitgutter_sign_removed = '🐾'
+let g:gitgutter_sign_removed_first_line = '🐾'
+let g:gitgutter_sign_modified_removed = '🐾'
+"========================================================
+" CONFIG MARKDOWN
+"========================================================
+nmap <leader>md :LivedownPreview<CR>
+let g:markdown_enable_spell_checking = 0
+
+"========================================================
+" CONFIG MAP KEY
+
+" Map leader key
+let mapleader = "," " map leader key to ,
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" Map Esc to jj
+:imap jj <Esc>
+
+" Hide highlight 
+map <silent> <leader><cr> :noh<cr>
+
+" Move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
+map <C-h> <C-W>h
+
+" Coppy all lines
+map <C-a> :%y+<Esc>
+
+
+"========================================================
+
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
