@@ -146,6 +146,9 @@ map <C-h> <C-W>h
 " Coppy all lines
 map <C-a> :%y+<Esc>
 
+" Stick this in your vimrc to open NERDTree with Ctrl+n
+map <C-n> :NERDTreeToggle<CR>
+
 
 "========================================================
 
